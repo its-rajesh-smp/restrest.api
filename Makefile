@@ -1,2 +1,2 @@
 dev: 
-	docker compose up --no-attach db
+	docker compose up --build --no-attach db
