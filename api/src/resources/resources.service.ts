@@ -7,9 +7,8 @@ export class ResourcesService {
     return Resource.findAll();
   }
 
-  async createResource(id, path: string[], data: Record<string, unknown>) {
-    //TODO: Check if the id is valid and not expired
-
-    console.log(id, path, data);
+  async createResource(data: Partial<Resource>) {
+    const resource = await Resource.create(data);
+    return resource;
   }
 }

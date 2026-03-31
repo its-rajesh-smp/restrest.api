@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ResourcesService } from './resources.service';
 
 @Controller()
@@ -10,12 +10,8 @@ export class ResourcesController {
     return await this.resourcesService.getResources();
   }
 
-  @Post(':id/*path')
-  async createResource(
-    @Param('id') id: string,
-    @Param('path') path: string[],
-    @Body() data: Record<string, unknown>,
-  ) {
-    return await this.resourcesService.createResource(id, path, data);
+  @Post()
+  async createResource(@Body() data: Record<string, unknown>) {
+    return await this.resourcesService.createResource(data);
   }
 }
